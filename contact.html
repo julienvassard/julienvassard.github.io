@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sophia Antipolis – Nous contacter</title>
+        <meta name="description"
+            content="Vous voulez contacter Sophia ANtipolis pour des suggestions, des retours, des évenement. Completez le formulaire de contact" />
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/contact.css">
+    </head>
+    <body>
+        <header role="banner">
+            <a href="#contenu" class="skip-link">Aller au contenu principal</a>
+            <a href="index.html">
+                <img src="images/logo.svg" alt="Sophia Antipolis" class="logo">
+            </a>
+            <nav aria-label="Menu principal">
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="article.html">Notre engagement accessibilité</a></li>
+                    <li><a href="contact.html" class="active" aria-current="page">Nous contacter</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main id="contenu">
+            <h1 id="title-form">Contactez-nous</h1>
+            <form action="#" method="post" aria-labelledby="formTitle">
+                <fieldset>
+                    <legend id="formTitle">Formulaire de contact</legend>
+
+                    <div class="form-group">
+                        <label for="nom">Nom <span aria-hidden="true">*</span></label>
+                        <input type="text" id="nom" name="nom" required aria-required="true" aria-describedby="nom-help">
+                        <small id="nom-help">Champ obligatoire</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Adresse e-mail <span aria-hidden="true">*</span></label>
+                        <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-help">
+                        <small id="email-help">Champ obligatoire, format attendu : exemple@domaine.com</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sujet">Sujet</label>
+                        <input type="text" id="sujet" name="sujet">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message <span aria-hidden="true">*</span></label>
+                        <textarea id="message" name="message" required aria-required="true" aria-describedby="message-help"></textarea>
+                        <small id="message-help">Veuillez détailler votre demande.</small>
+                    </div>
+
+                    <button type="submit">Envoyer</button>
+                </fieldset>
+            </form>
+            <div id="success-message" class="visually-hidden" role="status" aria-live="polite" tabindex="-1">
+                Votre message a été envoyé avec succès. Merci de nous avoir contactés !
+            </div>
+            <div id="error-message" class="visually-hidden" role="alert" aria-live="assertive" tabindex="-1">
+                <strong>Le nom doit contenir plus d’un caractère. Veuillez le corriger.</strong>
+            </div>
+        </main>
+        
+        <footer>
+            <nav aria-label="Navigation secondaire">
+                <ul class="footer-links">
+                    <li><a href="mentions-legales.html">Mentions légales</a></li>
+                    <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+                    <li><a href="accessibilite.html">Accessibilité</a></li>
+                </ul>
+            </nav>
+
+            <address>
+                Contact : <a href="mailto:contact@sophia-antipolis.fr">contact@sophia-antipolis.fr</a><br>
+                Sophia Antipolis, France
+            </address>
+
+            <p>&copy; 2025 Sophia Antipolis. Tous droits réservés.</p>
+        </footer>
+        <script>
+            const form = document.querySelector('form');
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+            const nomInput = document.getElementById('nom');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Empêche l’envoi réel
+
+                // Réinitialise les messages
+                successMessage.classList.add('visually-hidden');
+                errorMessage.classList.add('visually-hidden');
+
+                // Vérifie le champ Nom
+                if (nomInput.value.trim().toLowerCase() === 'a') {
+                    errorMessage.classList.remove('visually-hidden');
+                    errorMessage.focus();
+                    return;
+                }
+
+                // Si tout est OK
+                successMessage.classList.remove('visually-hidden');
+                successMessage.focus();
+                form.reset();
+            });
+        </script>
+    </body>
+</html>

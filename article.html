@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Notre engagement accessibilité — Sophia Antipolis</title>
+        <meta name="description"
+            content="Notre engagement en faveur de l'accessibilité numérique pour le site de Sophia Antipolis." />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/article.css" />
+    </head>
+    <body>
+        <header>
+            <a href="#contenu" class="skip-link">Aller au contenu principal</a>
+            <a href="index.html" class="home-link"
+                aria-label="Retour à l'accueil">
+                <img src="images/logo.svg"
+                    alt="Sophia Antipolis" class="logo" />
+            </a>
+            <nav aria-label="Menu principal">
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="article.html" class="active"
+                            aria-current="page">Notre engagement
+                            accessibilité</a></li>
+                    <li><a href="contact.html">Nous contacter</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main id="contenu">
+            <section class="article">
+                <h1>Notre engagement pour l'accessibilité du
+                    site</h1>
+
+                <figure>
+                    <img src="images/accessibilite-numerique.jpg"
+                        alt="Un ordinateur portable relié à des icônes représentant l'accessibilité" />
+                </figure>
+
+                <article id="pourquoi">
+                    <h2>Pourquoi l'accessibilité nous importe</h2>
+                    <p>
+                        Rendre notre site accessible, c'est permettre à toutes
+                        et tous,
+                        indépendamment de leurs capacités (déficiences
+                        visuelles, auditives,
+                        motrices ou cognitives), d'accéder à l'information et
+                        aux services.
+                        Nous croyons qu'un web inclusif est meilleur pour tout
+                        le monde :
+                        il améliore la clarté du contenu, la robustesse
+                        technique et la
+                        facilité d'utilisation sur tous les appareils.
+                    </p>
+                    <p>
+                        Pour cela, nous nous appuyons sur des référentiels
+                        reconnus (RGAA,
+                        WCAG) et sur des tests réels — y compris des retours
+                        d'utilisateurs
+                        en situation de handicap — afin d'orienter nos priorités
+                        et nos
+                        améliorations continues.
+                    </p>
+                </article>
+
+                <article id="actions">
+                    <h2>Actions déjà mises en place</h2>
+                    <ul>
+                        <li>Structure sémantique : usage des landmarks (header,
+                            nav, main, footer),
+                            titres hiérarchisés et listes pour une navigation
+                            logique.</li>
+                        <li>Images : alternatives textuelles claires et
+                            informatives (attribut
+                            <code>alt</code>).</li>
+                        <li>Navigation clavier : skip-link, ordre de tabulation
+                            cohérent et focus
+                            visibles pour tous les éléments interactifs.</li>
+                        <li>Contraste : vérification et ajustement des
+                            combinaisons de couleurs
+                            pour assurer une lisibilité suffisante.</li>
+                        <li>Composants interactifs : carrousels et boutons
+                            contrôlables au clavier
+                            et annoncés correctement pour les aides
+                            techniques.</li>
+                    </ul>
+                </article>
+
+                <article id="typographie">
+                    <h2>Une police pensée pour l'accessibilité</h2>
+                    <p>
+                        Nous utilisons également une police de caractères
+                        spécialement conçue
+                        pour l'accessibilité. Cette police présente plusieurs
+                        caractéristiques
+                        qui facilitent la lecture pour un large public : une
+                        hauteur d'x
+                        généreuse, des contreformes ouvertes, un espacement de
+                        lettres optimisé,
+                        et des formes de lettres distinctes pour réduire les
+                        confusions (par
+                        exemple entre le 'I' majuscule, le 'l' minuscule et le
+                        '1').
+                    </p>
+                    <p>
+                        La police est fournie et hébergée localement pour
+                        garantir une charge
+                        rapide et un rendu fiable.
+                        Le chargement respecte les bonnes pratiques
+                        (font-display: swap) afin
+                        de limiter les effets de 'flash' de texte invisible.
+                    </p>
+                    <p>
+                        Si vous rencontrez des problèmes de lecture liés à la
+                        police (taille,
+                        contraste ou espacement), dites-le-nous : nous
+                        ajusterons le rendu
+                        et ajouterons des options d'affichage adaptées.
+                    </p>
+                </article>
+
+                <article id="travaux">
+                    <h2>Travaux à venir</h2>
+                    <p>
+                        Nous prévoyons de poursuivre les efforts suivants :
+                        organiser des tests
+                        utilisateurs avec des personnes concernées par
+                        différents types de
+                        handicap afin d'assurer l'accessibilité de nos services.
+                    </p>
+                </article>
+
+            </section>
+
+            <aside class="related">
+                <nav aria-label="Plan de la page">
+                    <h2 id="toc-title">Plan de la page</h2>
+                    <ol>
+                        <li>
+                            <span class="section-title">Section 1 : </span>
+                            <a href="#pourquoi">Pourquoi l'accessibilité nous importe</a>
+                        </li>
+                        <li>
+                            <span class="section-title">Section 2 : </span>
+                            <a href="#actions">Actions déjà mises en place</a>
+                        </li>
+                        <li>
+                            <span class="section-title">Section 3 : </span>
+                            <a href="#travaux">Travaux à venir</a>
+                        </li>
+                        <li>
+                            <span class="section-title">Section 4 : </span>
+                            <span class="contact-text">Nous contacter : </span>
+                            <a href="mailto:accessibilite@sophia-antipolis.fr">accessibilite@sophia-antipolis.fr</a>
+                        </li>
+                    </ol>
+                </nav>
+            </aside>
+        </main>
+
+        <footer>
+            <nav aria-label="Navigation secondaire">
+                <ul class="footer-links">
+                    <li><a href="mentions-legales.html">Mentions
+                            légales</a></li>
+                    <li><a href="politique-confidentialite.html">Politique de
+                            confidentialité</a></li>
+                    <li><a href="accessibilite.html">Accessibilité</a></li>
+                </ul>
+            </nav>
+
+            <address>
+                Contact : <a
+                    href="mailto:contact@sophia-antipolis.fr">contact@sophia-antipolis.fr</a><br />
+                Sophia Antipolis, France
+            </address>
+
+            <p>&copy; 2025 Sophia Antipolis. Tous droits réservés.</p>
+        </footer>
+
+        <script src="js/carousel.js" defer></script>
+    </body>
+</html>

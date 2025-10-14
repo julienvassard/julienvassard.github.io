@@ -1,0 +1,148 @@
+form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+fieldset {
+  border: 2px solid #005aa7;
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+}
+
+legend {
+  font-weight: bold;
+  color: #005aa7;
+  padding: 0 0.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  outline: 3px solid orange;
+  border-color: orange;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+small {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #555;
+}
+
+button[type="submit"] {
+  display: inline-block;
+  background-color: #005aa7;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0076d6;
+  outline: none;
+}
+
+button[type="submit"]:focus {
+  outline: 3px solid orange;
+  outline-offset: 3px;
+  background-color: #00457a;
+}
+
+/* Accessibilité visuelle et focus */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid orange;
+  outline-offset: 2px;
+}
+
+/* Indicateur visuel des champs obligatoires */
+label span[aria-hidden="true"] {
+  color: #d00000;
+  font-weight: bold;
+}
+
+/* Amélioration du contraste global */
+body {
+  background-color: #fff;
+  color: #111;
+}
+
+#title-form {
+  text-align: center;
+  color: #005aa7;
+  margin-bottom: 1rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+}
+
+/* Messages de succès et d'erreur */
+#success-message,
+#error-message {
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 1rem;
+  outline: none; /* par défaut pas de focus */
+}
+
+/* Couleurs spécifiques */
+#success-message {
+  color: green;
+}
+
+#error-message {
+  color: red;
+}
+
+/* Focus orange pour accessibilité */
+#success-message:focus,
+#error-message:focus {
+  outline: 3px solid orange;
+  outline-offset: 2px;
+}
