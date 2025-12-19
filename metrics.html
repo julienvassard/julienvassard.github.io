@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Galileo - Comparateur de Patterns</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/metrics.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Galileo</div>
+        <div class="nav-links">
+            <a href="index.html">Accueil</a>
+            <a href="patterns.html">Occurrences</a>
+            <a href="memory.html">Coût Mémoire</a>
+            <a href="metrics.html" class="active">Comparateur</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="controls">
+            <div class="select-group border-a" style="padding-left:10px;">
+                <label class="select-label label-a">Pattern A (Référence)</label>
+                <select id="selectA" onchange="updateDashboard()">
+                    <option value="good">Modular Functions</option>
+                    <option value="bad">Hardcoded Paths</option>
+                    <option value="neutral">Pandas Usage</option>
+                </select>
+            </div>
+
+            <div class="toggle-container">
+                <label class="switch">
+                    <input type="checkbox" id="compareToggle" onchange="toggleCompareMode()">
+                    <span class="slider"></span>
+                </label>
+                <span style="font-weight:600; font-size:0.9rem;">Mode Comparaison</span>
+            </div>
+
+            <div class="select-group border-b" id="groupB" style="padding-left:10px; display:none;">
+                <label class="select-label label-b">Pattern B (Cible)</label>
+                <select id="selectB" onchange="updateDashboard()">
+                    <option value="bad" selected>Hardcoded Paths</option>
+                    <option value="good">Modular Functions</option>
+                    <option value="neutral">Pandas Usage</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="kpi-row">
+            <div class="kpi-card">
+                <div class="kpi-label">Complexité Halstead</div>
+                <div class="kpi-val-container" id="kpi-box-1"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Maintenabilité (MI)</div>
+                <div class="kpi-val-container" id="kpi-box-2"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Dette Technique</div>
+                <div class="kpi-val-container" id="kpi-box-3"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Cognitive Load</div>
+                <div class="kpi-val-container" id="kpi-box-4"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Duplication Code</div>
+                <div class="kpi-val-container" id="kpi-box-5"></div>
+            </div>
+        </div>
+
+        <div class="charts-row">
+            <div class="card">
+                <h2>Comparaison Visuelle (Radar)</h2>
+                <div id="radarPlot" class="plot"></div>
+            </div>
+            <div class="card">
+                <h2>Tendances Comparées (30 Jours)</h2>
+                <div id="trendPlot" class="plot"></div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <h2 style="margin-top:0;">Détails Techniques</h2>
+            <table class="tech-table">
+                <thead>
+                    <tr id="tableHeader">
+                        <th style="width: 40%;">Métrique</th>
+                        <th class="col-a">Pattern A</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/metrics.js"></script>
+</body>
+
+</html>

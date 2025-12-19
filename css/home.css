@@ -1,0 +1,66 @@
+/* home.css - Spécifique Accueil */
+
+.main-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header-text { text-align: center; margin-bottom: 60px; }
+h1 { font-size: 2.5rem; margin-bottom: 15px; color: var(--text-main); }
+.subtitle { font-size: 1.2rem; color: var(--text-sub); max-width: 600px; margin: 0 auto; line-height: 1.5; }
+
+/* Grille 3 colonnes */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 1300px;
+}
+
+.option-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex; flex-direction: column; align-items: flex-start;
+    height: 100%; box-sizing: border-box;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.option-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); border-color: var(--accent-color); }
+
+.card-icon {
+    width: 50px; height: 50px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; font-weight: bold; margin-bottom: 25px;
+}
+
+/* Thèmes */
+.blue-theme { --accent-color: var(--accent-blue); }
+.blue-theme .card-icon { background-color: #eff6ff; color: var(--accent-blue); }
+
+.red-theme { --accent-color: var(--accent-red); }
+.red-theme .card-icon { background-color: #fff1f2; color: var(--accent-red); }
+
+.purple-theme { --accent-color: var(--accent-purple); }
+.purple-theme .card-icon { background-color: #f3e8ff; color: var(--accent-purple); }
+
+.card-title { font-size: 1.4rem; font-weight: 700; color: var(--text-main); margin-bottom: 10px; }
+.card-desc { color: var(--text-sub); line-height: 1.6; margin-bottom: 30px; font-size: 0.95rem; }
+
+.card-action { margin-top: auto; font-weight: 600; color: var(--accent-color); display: flex; align-items: center; }
+.card-action::after { content: "→"; margin-left: 8px; transition: margin-left 0.2s; }
+.option-card:hover .card-action::after { margin-left: 12px; }
+
+@media (max-width: 1000px) {
+    .options-grid { grid-template-columns: 1fr; max-width: 500px; }
+}

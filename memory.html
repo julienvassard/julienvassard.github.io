@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Galileo - Analyse Mémoire</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/var.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Galileo</div>
+        <div class="nav-links">
+            <a href="index.html">Dashboard</a>
+            <a href="patterns.html">Occurrences</a>
+            <a href="memory.html" class="active">Performance</a>
+            <a href="metrics.html">Métriques Détaillées</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card full">
+            <h2>1. Distribution Mémoire (Box Plot)</h2>
+            <div id="boxPlotMem" class="plot"></div>
+        </div>
+
+        <div class="card full">
+            <h2>2. RAM Moyenne par Tranche de Score</h2>
+            <div id="heatmapMem" class="plot"></div>
+        </div>
+
+        <div class="card half">
+            <h2>3. Score vs RAM (Corrélation)</h2>
+            <div id="scatterMem" class="plot"></div>
+        </div>
+
+        <div class="card half">
+            <h2>4. Coût Mémoire par Catégorie de Score</h2>
+            <div id="barMem" class="plot"></div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/memory.js"></script>
+</body>
+
+</html>

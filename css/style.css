@@ -1,0 +1,93 @@
+/* style.css - Général */
+:root { 
+    --bg: #f8fafc; 
+    --card: #ffffff; 
+    --text-main: #1e293b; 
+    --text-sub: #64748b;
+    --border: #e2e8f0;
+    
+    /* Palette */
+    --accent-blue: #3b82f6; 
+    --accent-red: #f43f5e; 
+    --accent-purple: #8b5cf6;
+    --accent-green: #22c55e;
+    --accent-orange: #f97316;
+
+    /* Status backgrounds */
+    --success-bg: #dcfce7; --success-text: #166534;
+    --danger-bg: #fee2e2; --danger-text: #991b1b;
+    --warning-bg: #fef9c3; --warning-text: #854d0e;
+}
+
+body { 
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; 
+    background-color: var(--bg); 
+    color: var(--text-main); 
+    margin: 0; 
+    min-height: 100vh;
+    display: flex; 
+    flex-direction: column;
+}
+
+/* --- NAVIGATION --- */
+nav { 
+    background: var(--card); 
+    border-bottom: 1px solid var(--border); 
+    padding: 15px 30px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+}
+.logo { 
+    font-size: 1.5rem; 
+    font-weight: 800; 
+    color: var(--text-main); 
+    letter-spacing: -0.5px;
+}
+.nav-links a { 
+    color: var(--text-sub); 
+    text-decoration: none; 
+    margin-left: 20px; 
+    font-weight: 500; 
+    transition: 0.3s; 
+}
+.nav-links a:hover, .nav-links a.active { 
+    color: var(--accent-blue); 
+}
+
+/* --- LAYOUT COMMUN --- */
+.container { 
+    padding: 30px; 
+    width: 100%; 
+    max-width: 1600px; 
+    margin: 0 auto; 
+    box-sizing: border-box;
+}
+
+.card { 
+    background: var(--card); 
+    padding: 20px; 
+    border-radius: 12px; 
+    border: 1px solid var(--border); 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    display: flex; 
+    flex-direction: column;
+}
+
+/* Grilles pour Dashboard (Patterns & Memory) */
+.grid-dashboard {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;
+}
+.full { grid-column: 1 / -1; height: 500px; }
+.half { height: 450px; }
+
+h2 { 
+    font-size: 1.1rem; 
+    margin: 0 0 15px 0; 
+    color: var(--text-main); 
+    border-bottom: 1px solid var(--border); 
+    padding-bottom: 10px; 
+}
+.plot { flex-grow: 1; width: 100%; }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Galileo - Analyse des Fréquences</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/var.css">
+    
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Galileo</div>
+        <div class="nav-links">
+            <a href="index.html">Dashboard</a>
+            <a href="patterns.html" class="active">Occurrences</a>
+            <a href="memory.html">Performance</a>
+            <a href="metrics.html">Métriques Détaillées</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card full">
+            <h2>1. Top vs Flop : Fréquence des Patterns</h2>
+            <div id="barCompare" class="plot"></div>
+        </div>
+
+        <div class="card full">
+            <h2>2. Densité par Tranche de Score</h2>
+            <div id="heatmapFreq" class="plot"></div>
+        </div>
+
+        <div class="card half">
+            <h2>3. Corrélation : Score Moyen vs Popularité</h2>
+            <div id="bubblePlot" class="plot"></div>
+        </div>
+
+        <div class="card half">
+            <h2>4. Répartition détaillée des occurrences</h2>
+            <div id="stackPlot" class="plot"></div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/patterns.js"></script>
+</body>
+
+</html>
