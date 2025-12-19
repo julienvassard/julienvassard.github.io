@@ -102,3 +102,27 @@ input:checked + .slider:before { transform: translateX(26px); }
 
 .col-a { color: var(--color-a); font-weight: 600; }
 .col-b { color: var(--color-b); font-weight: 600; }
+
+/* --- WORKFLOW BOX --- */
+.workflow-box {
+    background: var(--card);
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.workflow-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+}
+
+.workflow-text {
+    font-size: 1rem;
+    color: var(--text-main);
+    line-height: 1.5;
+    font-style: italic;
+}

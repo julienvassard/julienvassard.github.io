@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Galileo - Métriques Détaillées</title>
@@ -7,46 +8,45 @@
     <link rel="stylesheet" href="css/metrics.css">
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 </head>
+
 <body>
 
     <nav>
         <div class="logo">Galileo</div>
         <div class="nav-links">
-            <a href="index.html">Accueil</a>
+            <a href="index.html">Dashboard</a>
             <a href="patterns.html">Occurrences</a>
-            <a href="memory.html">Coût Mémoire</a>
+            <a href="memory.html">Performance</a>
             <a href="metrics.html" class="active">Métriques Détaillées</a>
         </div>
     </nav>
 
     <div class="container">
-        
+
         <div class="controls">
             <div class="select-group border-a" style="padding-left:10px;">
                 <label class="select-label label-a">Pattern A (Référence)</label>
                 <select id="selectA">
-                    <option value="good">Modular Functions</option>
-                    <option value="bad">Hardcoded Paths</option>
-                    <option value="neutral">Pandas Usage</option>
+                    <option value="good">Pattern 1</option>
+                    <option value="bad">Pattern 5</option>
+                    <option value="neutral">Pattern 9</option>
                 </select>
             </div>
-
             <div class="toggle-container">
-                <label class="switch">
-                    <input type="checkbox" id="compareToggle">
-                    <span class="slider"></span>
-                </label>
+                <label class="switch"><input type="checkbox" id="compareToggle"><span class="slider"></span></label>
                 <span style="font-weight:600; font-size:0.9rem;">Mode Comparaison</span>
             </div>
-
             <div class="select-group border-b" id="groupB" style="padding-left:10px; display:none;">
                 <label class="select-label label-b">Pattern B (Cible)</label>
                 <select id="selectB">
-                    <option value="bad" selected>Hardcoded Paths</option>
-                    <option value="good">Modular Functions</option>
-                    <option value="neutral">Pandas Usage</option>
+                    <option value="bad" selected>Pattern 5</option>
+                    <option value="good">Pattern 1</option>
+                    <option value="neutral">Pattern 9</option>
                 </select>
             </div>
+        </div>
+
+        <div id="workflow-container" style="margin-bottom: 20px;">
         </div>
 
         <div class="kpi-row">
@@ -54,34 +54,31 @@
                 <div class="kpi-label">Complexité</div>
                 <div class="kpi-val-container" id="kpi-box-1">--</div>
             </div>
-            
             <div class="kpi-card" id="card-maintainability" onclick="changeMetric('maintainability')">
                 <div class="kpi-label">Maintenabilité</div>
                 <div class="kpi-val-container" id="kpi-box-2">--</div>
             </div>
-            
             <div class="kpi-card" id="card-debt" onclick="changeMetric('debt')">
                 <div class="kpi-label">Dette Technique</div>
                 <div class="kpi-val-container" id="kpi-box-3">--</div>
             </div>
-            
             <div class="kpi-card" id="card-cognitive" onclick="changeMetric('cognitive')">
                 <div class="kpi-label">Cognitive Load</div>
                 <div class="kpi-val-container" id="kpi-box-4">--</div>
             </div>
-            
             <div class="kpi-card" id="card-duplication" onclick="changeMetric('duplication')">
                 <div class="kpi-label">Duplication</div>
                 <div class="kpi-val-container" id="kpi-box-5">--</div>
             </div>
         </div>
 
+
         <div class="charts-row">
             <div class="card">
                 <h2>Empreinte Technique (ADN)</h2>
                 <div id="radarPlot" class="plot"></div>
             </div>
-            
+
             <div class="card">
                 <div id="trendPlot" class="plot"></div>
             </div>
@@ -97,7 +94,7 @@
                     </tr>
                 </thead>
                 <tbody id="tableBody">
-                    </tbody>
+                </tbody>
             </table>
         </div>
 
@@ -106,4 +103,5 @@
     <script src="js/common.js"></script>
     <script src="js/metrics.js"></script>
 </body>
+
 </html>

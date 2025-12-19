@@ -4,15 +4,15 @@
 const PLOTLY_CONFIG = {
     paper_bgcolor: 'rgba(0,0,0,0)',
     plot_bgcolor: 'rgba(0,0,0,0)',
-    font: { color: '#1e293b' }, // Texte sombre (adapté au thème clair)
+    font: { color: '#1e293b' },
     margin: { t: 30, l: 150, r: 20, b: 40 }
 };
 
-// --- CONSTANTES ---
+// --- NOMS GÉNÉRIQUES ---
 const PATTERN_NAMES = [
-    "Modular Functions", "Type Hinting", "Clear Markdown", "Version Control", 
-    "Hardcoded Paths", "Wildcard Imports", "Huge Cells", "No Description",    
-    "Pandas Usage", "Matplotlib" 
+    "Pattern 1", "Pattern 2", "Pattern 3", "Pattern 4", 
+    "Pattern 5", "Pattern 6", "Pattern 7", "Pattern 8",    
+    "Pattern 9", "Pattern 10" 
 ];
 
 const COLORS = {
@@ -20,42 +20,37 @@ const COLORS = {
     bad: '#ef4444',
     neutral: '#eab308',
     blue: '#3b82f6',
-    scale: ['#ef4444', '#f97316', '#eab308', '#84cc16', '#22c55e'] // De rouge à vert
+    scale: ['#ef4444', '#f97316', '#eab308', '#84cc16', '#22c55e'] 
 };
 
 // --- FONCTIONS UTILITAIRES ---
-
-// Génère un nombre aléatoire entre min et max
 function random(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-// Génère des données simulées de notebooks (utilisé par patterns.js et memory.js)
 function generateNotebooksData(count) {
     const notebooks = [];
     for (let i = 0; i < count; i++) {
         const score = Math.random();
         const nbPatterns = [];
-        let memory = 50; // MB de base
+        let memory = 50; 
 
-        PATTERN_NAMES.forEach(p => {
-            // Logique de probabilité (Bons patterns si score haut, Mauvais si score bas)
+        PATTERN_NAMES.forEach((p, index) => {
             let proba = 0.3;
-            const isGood = ["Modular Functions", "Type Hinting", "Clear Markdown"].includes(p);
-            const isBad = ["Hardcoded Paths", "Wildcard Imports", "Huge Cells"].includes(p);
+           
+            const isGood = index < 3; 
+            const isBad = index >= 3 && index < 6; 
 
             if (isGood) proba = score > 0.7 ? 0.8 : 0.1;
             else if (isBad) proba = score < 0.4 ? 0.8 : 0.1;
 
             if (Math.random() < proba) {
                 nbPatterns.push(p);
-                // Impact mémoire simulé
                 if (isBad) memory += random(500, 1500);
                 else memory += random(10, 100);
             }
         });
         
-        // Ajout de bruit
         memory += random(0, 100);
         notebooks.push({ id: i, score: score, patterns: nbPatterns, memory: memory });
     }

@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
             type: 'bar', 
             orientation: 'h', 
             marker: {color: COLORS.good},
-            // Tooltip explicite
             hovertemplate: 
                 '<b>Pattern :</b> %{y}<br>' +
                 '<b>Catégorie :</b> Excellents (>0.8)<br>' +
@@ -48,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
             type: 'bar', 
             orientation: 'h', 
             marker: {color: COLORS.bad},
-            // Tooltip explicite
             hovertemplate: 
                 '<b>Pattern :</b> %{y}<br>' +
                 '<b>Catégorie :</b> Médiocres (<0.4)<br>' +
@@ -70,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
         y: PATTERN_NAMES, 
         type: 'heatmap', 
         colorscale: 'Viridis',
-        // Tooltip explicite
         hovertemplate: 
             '<b>Pattern :</b> %{y}<br>' +
             '<b>Tranche de Score :</b> %{x}<br>' +
@@ -98,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
         text: PATTERN_NAMES, 
         mode: 'markers+text',
         marker: { size: totalCounts.map(c => Math.sqrt(c)*3), color: bubbleColors },
-        // Tooltip explicite
         hovertemplate: 
             '<b>%{text}</b><br>' +
             'Score Moyen : %{x:.2f} / 1.0<br>' +
@@ -119,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
             name: binLabels[i], 
             type: 'bar', 
             marker: { color: COLORS.scale[i] },
-            // Tooltip explicite
             hovertemplate: 
                 '<b>Pattern :</b> %{x}<br>' +
                 '<b>Qualité Notebook :</b> %{data.name}<br>' +

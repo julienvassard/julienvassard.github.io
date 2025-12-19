@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
         type: 'heatmap', 
         colorscale: 'Hot', 
         reversescale: true,
-        // Tooltip explicite
         hovertemplate: 
             '<b>Pattern :</b> %{y}<br>' +
             '<b>Score Notebook :</b> %{x}<br>' +
@@ -66,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
         mode: 'markers+text', 
         text: PATTERN_NAMES,
         marker: {size: sizes.map(s=>Math.sqrt(s)*3), color: avgRams, colorscale:'Hot', reversescale:true},
-        // Tooltip explicite
         hovertemplate: 
             '<b>%{text}</b><br>' +
             'Score Moyen : %{x:.2f}<br>' +
@@ -95,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
             name: binLabels[i], 
             type: 'bar', 
             marker: { color: COLORS.scale[i] },
-            // Tooltip explicite
             hovertemplate: 
                 '<b>Pattern :</b> %{x}<br>' +
                 '<b>Catégorie :</b> %{data.name}<br>' +
