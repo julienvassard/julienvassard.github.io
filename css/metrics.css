@@ -1,11 +1,11 @@
-/* metrics.css - Spécifique Métriques Détaillées */
+/* css/metrics.css */
 
 :root {
     --color-a: #3b82f6; 
     --color-b: #f43f5e; 
 }
 
-/* BARRE DE CONTRÔLE */
+/* --- BARRE DE CONTRÔLE --- */
 .controls { 
     background: var(--card); padding: 20px; border-radius: 12px; 
     border: 1px solid var(--border); margin-bottom: 20px;
@@ -36,24 +36,41 @@ select {
 input:checked + .slider { background-color: var(--text-main); }
 input:checked + .slider:before { transform: translateX(26px); }
 
-/* GRILLE KPI */
+/* --- GRILLE KPI (INTERACTIVE) --- */
 .kpi-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-bottom: 20px; }
+
 .kpi-card { 
     background: var(--card); padding: 15px; border-radius: 8px; border: 1px solid var(--border);
-    transition: transform 0.2s;
+    transition: all 0.2s;
+    cursor: pointer; /* Indique que c'est cliquable */
+    position: relative;
+    overflow: hidden;
 }
+
 .kpi-label { font-size: 0.75rem; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; margin-bottom: 5px;}
 
+/* Valeurs dans les cartes */
 .kpi-val-container { display: flex; align-items: baseline; gap: 10px; }
 .kpi-val { font-size: 1.4rem; font-weight: bold; color: var(--text-main); }
 .kpi-val-b { font-size: 1.1rem; color: var(--color-b); font-weight: 600; }
 .kpi-sep { color: var(--text-sub); font-size: 0.9rem; }
 
-/* GRILLE GRAPHIQUES */
+/* États Interactifs KPI */
+.kpi-card:hover {
+    background-color: #f8fafc;
+    border-color: var(--color-a);
+    transform: translateY(-2px);
+}
+.kpi-card.active {
+    background-color: #eff6ff;
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+}
+
+/* --- GRILLE GRAPHIQUES & CENTRAGE --- */
 .charts-row { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; margin-bottom: 20px; }
 
-/* --- AJOUTS POUR CENTRAGE DU RADAR --- */
-/* On redéfinit .card ici pour cette page spécifiquement afin de forcer la hauteur et le centrage */
+/* Redéfinition spécifique de .card pour Metrics pour centrer le radar */
 .card { 
     background: var(--card); 
     padding: 20px; 
@@ -66,21 +83,18 @@ input:checked + .slider:before { transform: translateX(26px); }
 }
 
 /* Empêche le titre de s'écraser */
-.card h2 {
-    flex-shrink: 0; 
-}
+.card h2 { flex-shrink: 0; }
 
-/* Configuration du conteneur Plotly pour qu'il prenne toute la place */
+/* Centrage du Plotly SVG */
 .plot { 
     flex-grow: 1; 
     width: 100%; 
-    min-height: 0; /* Important pour le Flexbox overflow */
+    min-height: 0; 
     display: flex;
-    align-items: center; /* Centre verticalement le SVG */
-    justify-content: center; /* Centre horizontalement le SVG */
+    align-items: center; justify-content: center;
 }
 
-/* TABLEAU */
+/* --- TABLEAU --- */
 .table-container { background: var(--card); border-radius: 12px; border: 1px solid var(--border); padding: 20px; }
 .tech-table { width: 100%; border-collapse: collapse; }
 .tech-table th { text-align: left; padding: 12px; border-bottom: 2px solid var(--border); color: var(--text-sub); font-size: 0.9rem; }

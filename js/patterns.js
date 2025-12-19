@@ -2,11 +2,11 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Récupération des données simulées (via common.js)
+    // 1. Récupération des données simulées
     const notebooks = generateNotebooksData(200);
 
     // Préparation des Bins (Tranches de score)
-    const binLabels = ['< 0.2', '0.2-0.4', '0.4-0.6', '0.6-0.8', '> 0.8'];
+    const binLabels = ['Critique (< 0.2)', 'Mauvais (0.2-0.4)', 'Moyen (0.4-0.6)', 'Bon (0.6-0.8)', 'Excellent (> 0.8)'];
     let dataMap = {};
     PATTERN_NAMES.forEach(p => dataMap[p] = [0, 0, 0, 0, 0]);
 
@@ -27,15 +27,59 @@ document.addEventListener('DOMContentLoaded', () => {
     const flopCounts = PATTERN_NAMES.map(p => dataMap[p][0] + dataMap[p][1]);
 
     Plotly.newPlot('barCompare', [
-        { y: PATTERN_NAMES, x: topCounts, name: 'Excellents (>0.8)', type: 'bar', orientation: 'h', marker: {color: COLORS.good} },
-        { y: PATTERN_NAMES, x: flopCounts, name: 'Médiocres (<0.4)', type: 'bar', orientation: 'h', marker: {color: COLORS.bad} }
-    ], { ...PLOTLY_CONFIG, barmode: 'group', xaxis: {title: 'Nb Notebooks', gridcolor: '#e2e8f0'} });
+        { 
+            y: PATTERN_NAMES, 
+            x: topCounts, 
+            name: 'Excellents (>0.8)', 
+            type: 'bar', 
+            orientation: 'h', 
+            marker: {color: COLORS.good},
+            // Tooltip explicite
+            hovertemplate: 
+                '<b>Pattern :</b> %{y}<br>' +
+                '<b>Catégorie :</b> Excellents (>0.8)<br>' +
+                '<b>Quantité :</b> %{x} notebooks' +
+                '<extra></extra>' 
+        },
+        { 
+            y: PATTERN_NAMES, 
+            x: flopCounts, 
+            name: 'Médiocres (<0.4)', 
+            type: 'bar', 
+            orientation: 'h', 
+            marker: {color: COLORS.bad},
+            // Tooltip explicite
+            hovertemplate: 
+                '<b>Pattern :</b> %{y}<br>' +
+                '<b>Catégorie :</b> Médiocres (<0.4)<br>' +
+                '<b>Quantité :</b> %{x} notebooks' +
+                '<extra></extra>'
+        }
+    ], { 
+        ...PLOTLY_CONFIG, 
+        barmode: 'group', 
+        xaxis: {title: 'Nombre de Notebooks', gridcolor: '#e2e8f0'},
+        legend: {orientation: 'h', y: 1.1}
+    });
 
     // --- CHART 2: HEATMAP ---
     const zData = PATTERN_NAMES.map(p => dataMap[p]);
     Plotly.newPlot('heatmapFreq', [{ 
-        z: zData, x: binLabels, y: PATTERN_NAMES, type: 'heatmap', colorscale: 'Viridis' 
-    }], { ...PLOTLY_CONFIG, xaxis: {side:'top'} });
+        z: zData, 
+        x: binLabels, 
+        y: PATTERN_NAMES, 
+        type: 'heatmap', 
+        colorscale: 'Viridis',
+        // Tooltip explicite
+        hovertemplate: 
+            '<b>Pattern :</b> %{y}<br>' +
+            '<b>Tranche de Score :</b> %{x}<br>' +
+            '<b>Fréquence :</b> %{z} fois' +
+            '<extra></extra>'
+    }], { 
+        ...PLOTLY_CONFIG, 
+        xaxis: {side:'top', title: 'Score Global du Notebook'} 
+    });
 
     // --- CHART 3: BUBBLE ---
     const avgScores = [], totalCounts = [], bubbleColors = [];
@@ -49,19 +93,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     Plotly.newPlot('bubblePlot', [{
-        x: avgScores, y: totalCounts, text: PATTERN_NAMES, mode: 'markers+text',
-        marker: { size: totalCounts.map(c => Math.sqrt(c)*3), color: bubbleColors }
-    }], { ...PLOTLY_CONFIG, xaxis: {title: 'Score Moyen', gridcolor: '#e2e8f0'}, yaxis: {title: 'Fréquence', gridcolor: '#e2e8f0'} });
+        x: avgScores, 
+        y: totalCounts, 
+        text: PATTERN_NAMES, 
+        mode: 'markers+text',
+        marker: { size: totalCounts.map(c => Math.sqrt(c)*3), color: bubbleColors },
+        // Tooltip explicite
+        hovertemplate: 
+            '<b>%{text}</b><br>' +
+            'Score Moyen : %{x:.2f} / 1.0<br>' +
+            'Apparitions Totales : %{y}' +
+            '<extra></extra>'
+    }], { 
+        ...PLOTLY_CONFIG, 
+        xaxis: {title: 'Score Moyen des Notebooks', gridcolor: '#e2e8f0', range: [0, 1]}, 
+        yaxis: {title: 'Fréquence Totale', gridcolor: '#e2e8f0'} 
+    });
 
     // --- CHART 4: STACKED BAR ---
     const traces = [];
     for(let i=0; i<5; i++) {
         traces.push({
-            x: PATTERN_NAMES, y: PATTERN_NAMES.map(p => dataMap[p][i]),
-            name: binLabels[i], type: 'bar', marker: { color: COLORS.scale[i] }
+            x: PATTERN_NAMES, 
+            y: PATTERN_NAMES.map(p => dataMap[p][i]),
+            name: binLabels[i], 
+            type: 'bar', 
+            marker: { color: COLORS.scale[i] },
+            // Tooltip explicite
+            hovertemplate: 
+                '<b>Pattern :</b> %{x}<br>' +
+                '<b>Qualité Notebook :</b> %{data.name}<br>' +
+                '<b>Nombre :</b> %{y}' +
+                '<extra></extra>'
         });
     }
     Plotly.newPlot('stackPlot', traces, { 
-        ...PLOTLY_CONFIG, barmode: 'stack', xaxis: { tickangle: -45 }, yaxis: { title: 'Nb Notebooks', gridcolor: '#e2e8f0' }, legend: { orientation: 'h', y: 1.1 }
+        ...PLOTLY_CONFIG, 
+        barmode: 'stack', 
+        xaxis: { tickangle: -45 }, 
+        yaxis: { title: 'Nombre de Notebooks', gridcolor: '#e2e8f0' }, 
+        legend: { orientation: 'h', y: 1.1 }
     });
 });
